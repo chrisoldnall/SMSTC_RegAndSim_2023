@@ -1,0 +1,104 @@
+---
+title: "Tutorial 1 - Expedited Overview"
+output: pdf
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to the Regression and Simulation methods module. This is the first script for the first tutorial. This is a prime opportunity to learn a lot more about data science and how to programme in R (or Python) so please make full use of this.
+
+Throughout we will use a package called 'tidyverse'. This is a 'superpackage' which contains lots of other packages with lots of functions. If you haven't installed this already then you need to go ahead and run the  line below. You only need to install a package once.
+
+```{r Tidyverse Install}
+install.packages("tidyverse")
+```
+
+You will notice in your console that the section above appeared in a 'grey' area. This is because this is an R Markdown document. This is represented by the file extension .Rmd. Meanwhile there are also R Scripts (represented by .R extensions). Typically when writing code for publishable purposes or for software we have a series of R Scripts, however R markdown files are becomming more flavoursome when examining unqiue datasets since a neater overview can be given, it also allows for a neat PDF (or other document type) to be an output showing text, code and code output.
+
+Having installed tidyverse earlier, we must still load in the package for our system to use it. We do that with the 'library' command - this is a built in R function. Let's do that now below, noting we do not need to use the quotes to load it in:
+
+```{r Tidyverse Loading}
+library(tidyverse)
+```
+
+You may have additionally noticed that to create a chunk of code in an R Markdown document we must use two sets of 3 `s with a set of curly braces following the first set of 3 with 'r' written in it. This is telling the interpreter that this is a block of R code.
+
+### Exercise 1
+Now that you know the basics of how to install and load packages, have a go at writing a code block below to install and load the package called "MASS". This will be the data set we will work with for the rest of this tutorial.
+
+Your Answer:
+
+-------------
+
+"MASS" is a package that has been curated for learning R. It contains several data sources. Typically we will not always install and load in data packages like that, but in future weeks we will touch upon other types of R data. For this tutorial we will be working with the cats data set. Run the below to select this from "MASS."
+
+```{r CatsDataSelection}
+data("cats")
+```
+
+Of course, as any great statistician or data scientist will know, the first thing to do when loading in is to try and get some summary of the data. Run the below and answer the exercise.
+
+```{r CatsOverview}
+str(cats)
+head(cats)
+tail(cats)
+summary(cats)
+```
+
+### Exercise 2
+Provide an overview of the data set cats, in particular discuss how many observartions and variables there are, as well as giving their data types.
+
+Your Answer:
+
+-------------
+
+Now we know how to get some built in summary features, we may want to level up and become more statistical. That is what about looking at the mean and standard deviation of our data? This is incredibly important. Run the below and see what comes out.
+
+```{r CatsStats}
+HeartSummary <- cats %>%
+    summarise(cats_heart_mean = mean(Hwt), cats_heart_sd = sd(Hwt))
+
+HeartSummary
+```
+
+Did you notice some weird syntax above? Let's address that. In R we use '<-' to assign a value to a variable. Above we have also started to use the tidyverse. '%>%' is known as a pipe and allows us to more intuatively access the data we have by 'piping into it' and then applying some functions.
+
+### Exercise 3
+Analogously to above, provide a summary for the body weight variable in the cats data set.
+
+Your Answer:
+
+-------------
+
+Now that we know how to summarise individual variables, we may want to start to look at relationships between variables. The go-to method to do this is a scatterplot. Run the code below and see what it does.
+
+```{r ScatterPlot}
+plot1 <- cats %>%
+  ggplot(aes(x = Bwt, y = Hwt)) +
+  geom_point()
+
+plot1
+```
+
+### Exercise 4
+Comment on the relationship between body weight and heart weight, using the plot.
+
+Your Answer:
+
+-------------
+
+### Exercise 5
+Amend the code given above, to colour the points on the plot by the sex of the cat. It may be useful to look at the documentation for the ggplot package. We do this by placing a question mark next to the package name and running the code, ie. "?ggplot".
+
+Your Answer:
+
+-------------
+
+### Exercise 6
+Once again amend the code. This time make it so that there are two plots which show two different the points seperated by the sex of the cats. Do you notice anything different from when they were on one plot? Write a short explanation.
+
+Your Answer:
+
+-------------
