@@ -102,3 +102,14 @@ Once again amend the code. This time make it so that there are two plots which s
 Your Answer:
 
 -------------
+
+This is the end of this tutorial. There are lots of different exercises provided with the course that you can now try and have a look at. Some of the exercises are extremely daunting for this point in the course and learning R so do not worry if you cannot solve them. In fact I would encourage you to not look at the exercises from Lecture 1 until towards the end of the course, unless you are already very familiar with R. Instead I would suggest looking at the following adaptions of the exercises. We will at a later point in the course cover all relavent syntax and knowledge to make these efficiently and properly.
+
+From 1-5:
+Create a matrix which evaluates the function $10\sin(x^{2}+y^{2})/(x^{2} + y^{2}) over the range (-10, 10) in x and y.
+
+From 1-7:
+Generate some data from a normal distribution and plot a histogram to give an estimate of the underlying probability density function.
+
+From 1-8:
+Understanding the distribution of extreme values is an important feature of some modelling problems, especially in environmental settings. Write some code which will repeatedly simulate from a normal distribution and then plot a histogram of the maxima from all the samples.
