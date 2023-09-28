@@ -1,5 +1,5 @@
 ---
-title: "Tutorial 1 - Expedited Overview"
+title: "Tutorial 1 - Saying hello to R."
 output: pdf
 ---
 
