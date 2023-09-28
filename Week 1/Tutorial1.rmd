@@ -1,15 +1,16 @@
 ---
 title: "Tutorial 1 - Saying hello to R."
-output: pdf
+author: <INSERT YOUR NAME>
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Welcome to the Regression and Simulation methods module. This is the first script for the first tutorial. This is a prime opportunity to learn a lot more about data science and how to programme in R (or Python) so please make full use of this.
+Welcome to the Regression and Simulation methods module. This is the first script for the first tutorial. This is a prime opportunity to learn a lot more about data science and how to programme in R so please make full use of this.
 
-Throughout we will use a package called 'tidyverse'. This is a 'superpackage' which contains lots of other packages with lots of functions. If you haven't installed this already then you need to go ahead and run the  line below. You only need to install a package once.
+Throughout we will use a package called 'tidyverse'. This is a 'superpackage' which contains lots of other packages with lots of functions. If you haven't installed this already then you need to go ahead and run the line below. You only need to install a package once.
 
 ```{r Tidyverse Install}
 install.packages("tidyverse")
