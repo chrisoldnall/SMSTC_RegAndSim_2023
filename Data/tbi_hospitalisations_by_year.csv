@@ -1,0 +1,64 @@
+injury_mechanism,type,year,rate_est,number_est
+Motor vehicle crashes,Hospitalizations,2006,27.6,82873
+Motor vehicle crashes,Hospitalizations,2007,23.5,71274
+Motor vehicle crashes,Hospitalizations,2008,23.4,71468
+Motor vehicle crashes,Hospitalizations,2009,22.7,70039
+Motor vehicle crashes,Hospitalizations,2010,27,84324
+Motor vehicle crashes,Hospitalizations,2011,18.4,58115
+Motor vehicle crashes,Hospitalizations,2012,21,66755
+Motor vehicle crashes,Hospitalizations,2013,18.8,60465
+Motor vehicle crashes,Hospitalizations,2014,18.1,58795
+Unintentional falls,Hospitalizations,2006,33.9,103608
+Unintentional falls,Hospitalizations,2007,33.5,104319
+Unintentional falls,Hospitalizations,2008,38.1,120775
+Unintentional falls,Hospitalizations,2009,40.2,129456
+Unintentional falls,Hospitalizations,2010,44.6,144854
+Unintentional falls,Hospitalizations,2011,40.6,134771
+Unintentional falls,Hospitalizations,2012,42,141620
+Unintentional falls,Hospitalizations,2013,41.2,141855
+Unintentional falls,Hospitalizations,2014,42.9,150745
+Unintentionally struck by or against an object,Hospitalizations,2006,2.7,8126
+Unintentionally struck by or against an object,Hospitalizations,2007,2.6,7684
+Unintentionally struck by or against an object,Hospitalizations,2008,2.5,7577
+Unintentionally struck by or against an object,Hospitalizations,2009,2.5,7659
+Unintentionally struck by or against an object,Hospitalizations,2010,2.9,8815
+Unintentionally struck by or against an object,Hospitalizations,2011,2.3,7218
+Unintentionally struck by or against an object,Hospitalizations,2012,2.5,7885
+Unintentionally struck by or against an object,Hospitalizations,2013,2.2,7010
+Unintentionally struck by or against an object,Hospitalizations,2014,2.2,7090
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2006,7.3,21905
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2007,6.5,19754
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2008,7.2,22025
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2009,7,21775
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2010,8,25226
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2011,6.3,20101
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2012,6.7,21705
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2013,6.2,20080
+"Other unintentional injury, mechanism unspecified",Hospitalizations,2014,6.4,21195
+Intentional self-harm,Hospitalizations,2006,0.4,1339
+Intentional self-harm,Hospitalizations,2007,0.4,1293
+Intentional self-harm,Hospitalizations,2008,0.4,1235
+Intentional self-harm,Hospitalizations,2009,0.4,1351
+Intentional self-harm,Hospitalizations,2010,0.6,1778
+Intentional self-harm,Hospitalizations,2011,0.5,1395
+Intentional self-harm,Hospitalizations,2012,0.5,1655
+Intentional self-harm,Hospitalizations,2013,0.5,1665
+Intentional self-harm,Hospitalizations,2014,0.6,1730
+Assault,Hospitalizations,2006,7.1,21270
+Assault,Hospitalizations,2007,6.8,20648
+Assault,Hospitalizations,2008,7.4,22405
+Assault,Hospitalizations,2009,7.2,21873
+Assault,Hospitalizations,2010,8.3,25355
+Assault,Hospitalizations,2011,6,18562
+Assault,Hospitalizations,2012,6.2,19545
+Assault,Hospitalizations,2013,5.6,17520
+Assault,Hospitalizations,2014,5.5,17395
+Other or no mechanism specified,Hospitalizations,2006,13,39535
+Other or no mechanism specified,Hospitalizations,2007,13.8,42378
+Other or no mechanism specified,Hospitalizations,2008,6.9,21532
+Other or no mechanism specified,Hospitalizations,2009,7.9,25162
+Other or no mechanism specified,Hospitalizations,2010,11.2,35642
+Other or no mechanism specified,Hospitalizations,2011,8.4,27318
+Other or no mechanism specified,Hospitalizations,2012,9.4,31195
+Other or no mechanism specified,Hospitalizations,2013,9.7,32960
+Other or no mechanism specified,Hospitalizations,2014,9.2,31470
