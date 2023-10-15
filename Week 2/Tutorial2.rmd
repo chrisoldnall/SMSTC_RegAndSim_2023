@@ -1,0 +1,101 @@
+---
+title: "Tutorial 2 - Linear models."
+author: "<INSERT YOUR NAME>"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to the second tutorial of the Regression and Simulation methods module. This is the next script in developing your skills in R, whilst learning about Regression. Throughout this notebook we will be solidfying the process of normal linear modelling and ensuring you can complete the analysis for all parts we have discussed in the tutorial.
+
+### Exercise 0
+Throughout remember we will need tidyverse, go ahead and do this as your first task.
+
+Your Answer:
+```{r Exercise0}
+
+```
+-------------
+
+This week we will be working with a data set which is all about plastic pollution. Plastic pollution is a major and growing problem, negatively affecting oceans and wildlife health. [Our World in Data](https://ourworldindata.org/plastic-pollution) has a lot of great data at various levels including globally, per country, and over time. Here we focus on data from 2010.
+
+Additionally, National Geographic ran a data visualization communication contest on plastic waste as seen [here](https://www.nationalgeographic.org/funding-opportunities/innovation-challenges/plastic/dataviz/).
+
+The dataset for this notebook can be found as a csv file. We do not load this like we did previously, as it is not a built in R data set. Instead we must use the 'read_csv' command. Depending on where you store the data you may have to change the file pathway.
+
+```{r load-data, message=FALSE, eval=TRUE}
+plastic_waste <- read_csv("plastic-waste.csv")
+```
+You may have not considered it, but a fun note is that '.csv' stands for 'comma seperated values'. Other common file extensions include '.xlsx' for Excel spreadsheets and '.tsv' for 'tab seperated values'. You will have to change the import command depending on your data type otherwise it may not load it in correctly. We'll practice this in future weeks.
+
+### Exercise 1
+Go ahead now and investigate this data. Write a paragraph to describe what it contains, how many observations there are, what the variables are and what types these variables are stored as. Additionally include a scatterplot of each countries total population (x) vs plastic waste per capita (y), grouped by continent. (Hint: you will need to use the command 'facet_wrap').
+
+Your Answer:
+```{r Exercise1}
+
+```
+-------------
+
+Within much data, we will observe different trends depending on certain characteristics (also known as confounders). In this data, a potential confoudner could be continent. Therefore we peform **population stratification**. This is the process of dividing up our population in to groups to reduce any indirect effect induced by a potential confounder. To do this we can use the 'filter' command as follows:
+
+```{r pop-strat}
+North_America_Data <- plastic_waste %>%
+    filter(continent == "North America")
+```
+
+### Exercise 2
+For the rest of this exercise we will work with the data for the 'Europe' continent only. Go ahead and filter for this, saving it as a new object. Once this has been done, again create a scatterplot, for plastic waste per capita against population, but consider that we might want to transform one of the scales. To this same plot use 'geom_smooth(method=lm)' to add a linear model line to the plot.
+
+Your Answer:
+```{r Exercise2}
+
+```
+-------------
+
+Having now visually inspected the graph, consider that there are multiple other variables in the data that might be contributing to the final outcome of plastic waste per capita.
+
+### Exercise 3
+Formulate in words and equations the largest model you can which would make sense with the data you have. You can use '$$ $$' within markdown in a similar manner to LateX to write your model.
+
+Your Answer:
+
+
+-------------
+
+In R we can use the command 'lm' to construct our linear model and get an estimate of our parameters (through the least squares method). Note however this uses the '~' notation to write in what we want the model to be. We can read Y ~ X + Z as, 'explain Y by X and Z'.
+
+### Exercise 4
+Put in to practice the linear model that you have formulated. Save the results in an object called 'EuropeWaste_LM'. Comment on what seems to be the strongest contributor to the model. [Hint: You will need to specify with lm, that you are giving it the formula when using tidyverse].
+
+Your Answer:
+```{r Exercise 4}
+
+```
+
+-------------
+
+Now we have constructed our model, we need to check if it is indeed a good fit. As mentioned in the theory utilising residuals and constucting two of the most common ways to do this; a normal QQ-plot for the residuals and a residuals vs fitted values plot. 
+
+### Exercise 5
+Construct both a normal QQ-plot and a residulas vs fitted values plot, noting you already saved your model as an object. Interpret the relevant plots. [Hint: Your code may give you additional plots, we will discuss these in the next notebook]. Comment on your findings.
+
+Your Answer:
+```{r Exercise 5}
+
+```
+
+This is the end of this tutorial. Consider the following exercises if you have finished, and also for doing during this week.
+
+From 2-1:
+Prove that $\mathbb{E}[\text{RSS}] = (n-p)\sigma^{2}
+
+From 2-3:
+A useful graphical method for assessing the potential value of adding a new variable to a linear model is an added variable plot. Consider the DO data (found on the SMSTC website) for Station 20, with explanatory variables Temperature and Salinity. 
+Construct the residuals for this model. These residuals could be plotted against the new variables; try this with Year. However, some theoretical analysis shows that a better thing to do is to first find the residuals of the linear model which has Year as response and Temperature, Salinity as explanatory variables. This is simply a device to extract the information on Temperature and Salinity from Year, before we assess its further value. 
+The added variable plot is then constructed by plotting the residuals of the DO model against the residuals for the Year model. Try this, and assess the degree to which Year has further useful information. Can you give an intuitive explanation of why the added variable plot may be better than simply plotting the residuals of the first model against Year?
+
+From 1-4:
+Plot the rodent data (log(Speed) against log(Mass)) and fit a simple linear regression. Construct the residuals vs fitted values plot, and the normal QQ-plot. Comment on what you see.
