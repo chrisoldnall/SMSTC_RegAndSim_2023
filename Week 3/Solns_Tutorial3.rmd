@@ -1,0 +1,126 @@
+---
+title: "Tutorial 2 - Linear models cont. (Solutions)."
+author: "Christopher A Oldnall"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to the third tutorial of the Regression and Simulation methods module. This is the next script in developing your skills in R, whilst learning how to perform analysis on linear regression models. Throughout this notebook we will be looking to get information about linear models we fit, as well as how we can consider non-linear models.
+
+### Exercise 0
+Throughout remember we will need tidyverse, go ahead and do this as your first task.
+
+Your Answer:
+```{r Exercise0}
+library(tidyverse)
+```
+-------------
+
+In 2004, the state of North Carolina released a large data set containing information on births recorded in this state. This data set is useful to researchers studying the relation between habits and practices of expectant mothers and the birth of their children. We will work with a random sample of observations from this data set. For a full descriptions of what each variable is, head to https://www.openintro.org/data/index.php?data=ncbirths
+
+First, let's load the nc data set into our workspace. Notice that this is a slightly different way of loading the data in than what we did before. This is because the file we are using is an R data structure file and not a csv file - this way, we can have more information saved in the data set and need less pre-processing.
+
+```{r load-data, message=FALSE, eval=TRUE}
+nc <- readRDS("/Users/chrisoldnall/Library/Mobile Documents/com~apple~CloudDocs/Teaching/SMSTC_RegAndSim_2023/Week 3/nc_births.rds")
+```
+
+### Exercise 1
+How many cases are there in our sample? Determine whether each variable in this dataset is numerical or categorical. Following this create some plot to visually explore the distribution of mothers' smoking habits and baby weight - explain your findings.
+Hint: a histogram is good at showing whether something is normally distributed or not.
+
+Your Answer:
+```{r Exercise1}
+str(nc)
+
+mothersmokeweight_plot <- nc %>%
+    ggplot(aes(x = weight)) +
+    geom_histogram(binwidth = 1) +
+    facet_wrap(~ habit)
+
+mothersmokeweight_plot
+```
+
+We see here there are 1000 cases and 13 variables within our sample; 'fage', 'mage', 'weeks', 'visits', 'gained' and 'weight' are numerical variables (with 'weight' being floating point) whilst the rest are categorical. Following this a histogram is created per smoking habit group and we see a normal distribution being formed in each group.
+
+-------------
+
+### Exercise 2
+Now go ahead and run a linear model between the weight and weeks data, save it as 'linear_model'. You can use the function 'summary()' on whatever you save your linear model as to get a range of analyses related information. Write the model it has fitted in markdown/latex and report the relevant information about the model fit (RSS).
+Hint: You can use the function 'anova()' to find out the RSS.
+
+Your Answer:
+```{r Exercise2}
+linear_model <- nc %>%
+    lm(formula = weight ~ weeks)
+
+summary(linear_model)
+anova(linear_model)
+```
+
+Here we see that the model has been fitted as:
+$$y_{\text{weight}} = -6.10 + 0.34x_{\text{weeks}}.$$
+The residual sum of squares is 0.449.
+
+-------------
+
+### Exercise 3
+Use the 'geom_smooth(method='lm')' command to plot the linear model of weight against weeks. Consider could there be a confounding variable in play and should we stratify our data? Fit another linear model which now depends on weeks and this other variable and see if the coefficient estimate for weeks varies from the first linear model.
+
+Your Answer:
+```{r Exercise3}
+linearmodel_plot <- nc %>%
+  ggplot(aes(x = weeks, y = weight)) +
+  geom_point() +
+  geom_smooth(method='lm')
+
+linearmodel_plot
+
+linearmodel_plot_faceted <- nc %>%
+  ggplot(aes(x = weeks, y = weight)) +
+  geom_point() +
+  geom_smooth(method='lm') +
+  facet_wrap(~habit)
+
+linearmodel_plot_faceted
+
+linear_model2 <- nc %>%
+    lm(formula = weight ~ weeks + habit)
+
+summary(linear_model2)  
+```
+
+-------------
+
+### Exercise 4
+Complete the following code to calculate the F statistic between your two models and to obtain a p-value through the code provided. What does the p-value mean in this case?
+
+```{r Exercise 4}
+RSS0 <- sum(residuals(linear_model)^2)
+RSS1 <- sum(residuals(linear_model2)^2)
+FObs <- ((RSS0 - RSS1) / 995-996) / (RSS1 / (1000 - 995))
+p_value <- 1 - pf(FObs, 996, 995)
+
+p_value
+```
+
+-------------
+
+### Challenge
+Take the weight and weeks data and fit a non-linear log model.
+Hint: You will need to use the function 'nls()' instead of 'lm()' as we are no longer fitting a linear model.
+
+-------------
+
+This is the end of this tutorial. Consider the following exercises if you have finished, and also for doing during this week.
+
+From 3-1: 
+Using the poisons data (available on the SMSTC website), find a transformation for which the model assumptions, when checked by the standard residuals plots, are reasonable.
+
+From 3-4: 
+A set of data on brown onions is available (on the SMSTC website). Fit a similar type of model as that of the white onions presented within the SMSTC notes. Comment on your findings.
+
+From 1-1: 
+Return to the data-frame cats in the MASS package from Tutorial 1. Plot and model the relationship between bwt and hwt using a non-linear function.
