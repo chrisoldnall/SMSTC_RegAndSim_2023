@@ -1,0 +1,77 @@
+---
+title: "Tutorial 4 - Likelihood."
+author: "<Insert Your Name>"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to the fourth tutorial of the Regression and Simulation methods module. This is the next script in developing your skills in R, whilst learning about the use of likelihood. Throughout this notebook we will be looking at using functions that are built in for solving likelihood estimation problems both analytically and numerically.
+
+### Exercise 0
+Throughout remember we will need tidyverse, go ahead and do this as your first task. In addition install the package 'maxLik' and load this in as well.
+
+Your Answer:
+```{r Exercise0, message=FALSE}
+
+```
+-------------
+
+Before we explore some exercises this week, we are going to see an example of constructing a function and also a while loop; let us consider a very basic example. Here is an example function in R:
+
+This function takes in a values of a and b from a right angled triangle and returns the value of the hypotenuse.
+```{r FunctionExample}
+Hypotenuse <- function(a, b){sqrt(a**2 + b**2)}
+Hypotenuse(3, 4)
+```
+
+Perhaps I want to find an equation where the hypotenuse is bigger than a certain value given a set b but variable a.
+```{r WhileLoopExample}
+eps = 1000
+a = 9
+b = 842.390
+while(Hypotenuse(a, b) < eps){a <- a + 0.001}
+```
+
+### Exercise 1
+Now lets do some stuff related to the MLE proceudure. A random sample is available:
+```{r RandomSample}
+y = c(1.09, -0.23, 0.79, 2.31, -0.81)
+```
+
+Determine the maximum likelihood estimate of theta using the score function derived using the Fisher's method of scoring, which says:
+
+$$\theta_{r+1} = \theta_{r} + U(\theta_{r})/I(\theta_{r}).$$
+
+Here set $I(\theta_{r}) = n/2$ - this will be explored next week. Use the stopping criterion $|U(\theta_{r})-\theta| \leq \epsilon$ for some small epsilon.
+
+```{r Exercise1}
+
+```
+
+-------------
+
+### Exercise 2
+Try to do the same thing again but instead this time use 'maxLik' function with the Newton-Raphson method.
+Hint: once installed use '?maxLik' to find out about the function.
+
+Your Answer:
+```{r Exercise2}
+
+```
+
+-------------
+
+### Exercise 3
+Plot the log-likelihood function as a function of theta to check that the identified MLE corresponds to the maximum.
+
+Your Answer:
+```{r Exercise3}
+
+```
+
+-------------
+
+This is the end of this tutorial. Firstly next you should attempt the question at the end of the slides for this week. This can then be following by 4-1, 4-2 and 4-3 from the SMSTC exercises this week.
