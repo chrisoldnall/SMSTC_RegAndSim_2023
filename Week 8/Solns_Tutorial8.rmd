@@ -1,0 +1,89 @@
+---
+title: "Tutorial 8 - Simulation Methods (Solutions)."
+author: "Christopher A Oldnall"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to the eigth tutorial of the Regression and Simulation methods module. This is the next script in developing your skills in R, whilst learning about simulation methods. Throughout this notebook we will start to consider how to implement different procedures necessary to be able to simulate data effectively. This week all exercises are taken from Week 8 of the SMSTC resources.
+
+### Exercise 0
+
+Throughout remember we will need tidyverse, go ahead and do this as your first task.
+
+Your Answer:
+
+```{r Exercise0, message=FALSE}
+library(tidyverse)
+```
+
+------------------------------------------------------------------------
+
+### Exercise 1
+
+In whatever way you like generate 100 random deviates of U(0, 1).
+
+```{r Exercise1}
+# BY LINEAR CONGRUENTIAL GENERATOR
+set.seed(123)
+m <- 4096 # 2^11
+a <- 4*7+1
+b <- 89
+x <- rep(NA, 250) 
+x[1] <- 353
+for (k in 2:250){ 
+    x[k]<-(a*x[k-1]+b)%%m 
+  }
+u <- x/m
+hist(u)
+
+# OR BY REJECTION METHOD
+u <- runif(1000, -2, 2)
+h <- dnorm(0, 0, 1)
+v <- runif(1000, 0, h)
+accept <- rep(0, 1000)
+for (i in 1:1000) {
+  if (v[i] < dnorm(u[i],0,1)) accept[i] <- 1
+  } 
+u[accept==1]
+1-sum(accept)/1000
+```
+
+------------------------------------------------------------------------
+
+### Exercise 2
+
+Use the numbers from exercise 1 to generate 250 poisson deviates. 
+
+```{r Exercise2}
+xpois <- rep(NA,250)
+for (j in 1:250){ 
+  xpois[j] <- max(c(0,which(ppois(0:15,2)<u[j]))) 
+  }
+```
+
+------------------------------------------------------------------------
+
+### Exercise 3
+
+Generate $y_{1}, ..., y_{60}$ from the binary GLM: $\text{logit}(\mathbb{E}(Y_{i}))=-3+0.1x_{i}$, where $x_{i} = i$ for $i = 1,...,60$. Calculate the maximum likelihood estimate of the intercept and slope parameter. Repeat these two steps 1000 times. Use the 1000 resulting maximum likelihood estimates to check whether maximum likelihood estimation in the given scenario is unbiased.
+
+```{r Exercise3}
+x <- 1:60
+runs <- 10000
+MLEs1 <- rep(NA,runs) 
+MLEs2 <- rep(NA,runs)
+for (k in 1:runs){ 
+  y <- rbinom(60,size=1,plogis(-3+0.1*x)) 
+  mod <- glm(y~x,family=binomial) 
+  MLEs1[k] <- mod$coeff[1] 
+  MLEs2[k] <- mod$coeff[2]
+} 
+mean(MLEs1) 
+mean(MLEs2)
+```
+
+------------------------------------------------------------------------
