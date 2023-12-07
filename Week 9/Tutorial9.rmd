@@ -1,0 +1,86 @@
+---
+title: "Tutorial 9 - Bootstrap Methods."
+author: "<INSERT YOUR NAME>"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to the ninth tutorial of the Regression and Simulation methods module. This is the next script in developing your skills in R, whilst learning about bootstrap methods. 
+The questions here are a mix of newly written questions which function to be similar enough to the assignment as to provide the skills you need but not similar enough to just allow you to get the answers. 
+
+
+### Exercise 0
+
+Throughout remember we will need tidyverse, go ahead and do this as your first task.
+
+Your Answer:
+
+```{r Exercise0, message=FALSE}
+library(tidyverse)
+```
+
+------------------------------------------------------------------------
+
+### Exercise 1: Non-Parametric Bootstrap
+Given the following data sets, run a bootstrap with 1000 samples to derive a 95% CI for both the mean of X and for the mean of Y.
+
+```{r Exercise1}
+x <- c(0.4,0.7,1.1,0.2,0.7,1.4,1.3,0.2) 
+y <- c(22,5,11,9,9,5,2,7)
+
+```
+
+------------------------------------------------------------------------
+
+### Exercise 2
+
+Fit a Poisson GLM to the data X and Y. Interpret your findings. 
+
+```{r Exercise2}
+
+```
+
+------------------------------------------------------------------------
+
+### Exercise 3
+
+Calculate the CI of the effect estimate of x on y via the approximate distribution given by the GLM.
+
+```{r Exercise3}
+
+```
+
+------------------------------------------------------------------------
+
+### Exercise 4
+
+Calculate the CI via a parametric bootstrap using 5000 re-samples.
+
+```{r Exercise4}
+
+```
+
+------------------------------------------------------------------------
+
+### Exercise 5
+
+Calculate the CI via the PITR bootstrap using 5000 re-samples
+
+```{r Exercise5}
+
+```
+
+------------------------------------------------------------------------
+
+### Exercise 6
+
+Compare the CIs from 3.1-3.3. What are the differences? Which seems to be the most conservative. What other bootstrap method could you employ to solve problems mentioned?
+
+```{r Exercise6}
+
+```
+
+------------------------------------------------------------------------
